@@ -1,0 +1,30 @@
+{
+    "name": "serverless-isomorphic-react",
+    "version": "1.0.0",
+    "description": "Serverless APIs for isomorphic react project",
+    "author": "Firman Cahyandi",
+    "license": "MIT",
+    "scripts": {
+        "dev": "sls offline start --port 4500",
+        "deploy": "sls deploy --verbose --stage prod",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "express": "^4.16.4",
+        "serverless-http": "^1.9.0",
+        "source-map-support": "^0.5.9"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.1.5",
+        "@babel/core": "^7.1.6",
+        "@babel/preset-env": "^7.1.6",
+        "babel-eslint": "^10.0.1",
+        "babel-loader": "^8.0.4",
+        "babel-plugin-source-map-support": "^2.0.1",
+        "serverless": "^1.35.1",
+        "serverless-offline": "^4.2.1",
+        "serverless-webpack": "^5.2.0",
+        "webpack": "^4.26.1",
+        "webpack-node-externals": "^1.7.2"
+    }
+}

@@ -1,0 +1,39 @@
+service:
+  name: serverless-isomorphic-react
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ap-southeast-2
+  stage: ${opt:stage, self:custom.defaultStage}
+  profile: ${self:custom.secrets.AWS_PROFILE}
+  environment:
+    ENVIRONMENT: ${self:provider.stage}
+  vpc:
+    securityGroupIds:
+      - ${self:custom.secrets.SECURITY_GROUP}
+    subnetIds:
+      - ${self:custom.secrets.AZ_SUBNET_A}
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+package:
+  individually: true
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  serverless-offline:
+    host: 0.0.0.0
+  defaultStage: dev
+  secrets: ${file(secrets.${self:provider.stage}.yml)}
+
+functions:
+  api:
+    handler: src/server/index.default
+    events:
+      - http: ANY /
+      - http: 'ANY /{param+}'
