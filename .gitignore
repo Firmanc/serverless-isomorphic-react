@@ -14,6 +14,7 @@ secret.json
 secrets.*.yml
 *.zip
 
+.next
 .serverless
 .webpack
 yarn-error.log
