@@ -16,8 +16,9 @@ provider:
       - ${self:custom.secrets.AZ_SUBNET_A}
 
 plugins:
-  - serverless-webpack
   - serverless-offline
+  - serverless-webpack
+
 
 package:
   individually: true
@@ -30,10 +31,11 @@ custom:
     host: 0.0.0.0
   defaultStage: dev
   secrets: ${file(secrets.${self:provider.stage}.yml)}
+  packager: yarn
 
 functions:
-  api:
-    handler: src/server/index.default
+  server:
+    handler: src/index.default
     events:
       - http: ANY /
-      - http: 'ANY /{param+}'
+      - http: 'ANY /{proxy+}'

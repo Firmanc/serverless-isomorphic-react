@@ -5,26 +5,45 @@
     "author": "Firman Cahyandi",
     "license": "MIT",
     "scripts": {
-        "dev": "sls offline start --port 4500",
+        "dev": "next build src && sls offline start --port 4500",
         "deploy": "sls deploy --verbose --stage prod",
+        "build": "next build src",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
+        "eslint": "^5.13.0",
         "express": "^4.16.4",
+        "lodash": "^4.17.11",
+        "morgan": "^1.9.1",
+        "next": "^7.0.2",
+        "prop-types": "^15.6.2",
+        "react": "^16.7.0",
+        "react-dom": "^16.7.0",
+        "react-router": "^4.3.1",
+        "react-router-config": "^4.4.0-beta.6",
+        "react-router-dom": "^4.3.1",
         "serverless-http": "^1.9.0",
-        "source-map-support": "^0.5.9"
+        "source-map-support": "^0.5.9",
+        "styled-components": "^4.1.3"
     },
     "devDependencies": {
         "@babel/cli": "^7.1.5",
         "@babel/core": "^7.1.6",
         "@babel/preset-env": "^7.1.6",
+        "@babel/preset-react": "^7.0.0",
         "babel-eslint": "^10.0.1",
         "babel-loader": "^8.0.4",
         "babel-plugin-source-map-support": "^2.0.1",
+        "copy-webpack-plugin": "^4.6.0",
+        "eslint-config-airbnb": "^17.1.0",
+        "eslint-plugin-import": "^2.16.0",
+        "eslint-plugin-jsx-a11y": "^6.2.0",
+        "eslint-plugin-react": "^7.12.4",
         "serverless": "^1.35.1",
         "serverless-offline": "^4.2.1",
         "serverless-webpack": "^5.2.0",
         "webpack": "^4.26.1",
+        "webpack-cli": "^3.2.1",
         "webpack-node-externals": "^1.7.2"
     }
 }
