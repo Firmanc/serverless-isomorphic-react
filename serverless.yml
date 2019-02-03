@@ -17,11 +17,16 @@ provider:
 
 plugins:
   - serverless-offline
+  - serverless-webpack
+
 
 package:
   individually: true
 
 custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
   serverless-offline:
     host: 0.0.0.0
   defaultStage: dev

@@ -6,6 +6,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: slsw.lib.entries,
   target: 'node',
+  node: {
+    __dirname: true,
+    __filename: true,
+  },
   devtool: 'source-map',
   externals: [nodeExternals()],
   mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
@@ -32,11 +36,13 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyWebpackPlugin(
-      [{
-        from: './dist',
-        to: './dist',
-      }],
-    ),
+    new CopyWebpackPlugin([
+      {
+        from: './src/.next/**',
+      },
+      {
+        from: './src/public/**',
+      },
+    ]),
   ],
 };
