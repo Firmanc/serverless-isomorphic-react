@@ -1,0 +1,27 @@
+{
+	"extends": [
+		"airbnb",
+		"plugin:react/recommended"
+	],
+	"parser": "babel-eslint",
+	"env": {
+		"browser": true,
+		"node": true,
+		"es6": true,
+		"mocha": true
+	},
+	"plugins": [
+			"react"
+		],
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"paths": ["."]
+			},
+			"babel-module": {}
+		}
+    },
+    "rules": {
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    }
+}
