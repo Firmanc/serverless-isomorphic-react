@@ -22,6 +22,8 @@
         "react-router": "^4.3.1",
         "react-router-config": "^4.4.0-beta.6",
         "react-router-dom": "^4.3.1",
+        "serverless-apigw-binary": "^0.4.4",
+        "serverless-apigwy-binary": "^1.0.0",
         "serverless-http": "^1.9.0",
         "source-map-support": "^0.5.9",
         "styled-components": "^4.1.3"

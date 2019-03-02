@@ -13,12 +13,13 @@ provider:
     securityGroupIds:
       - ${self:custom.secrets.SECURITY_GROUP}
     subnetIds:
-      - ${self:custom.secrets.AZ_SUBNET_A}
+      - ${self:custom.secrets.AZ_SUBNET}
 
 plugins:
   - serverless-offline
   - serverless-webpack
-
+  - serverless-apigw-binary
+  - serverless-apigwy-binary
 
 package:
   individually: true
@@ -32,10 +33,35 @@ custom:
   defaultStage: dev
   secrets: ${file(secrets.${self:provider.stage}.yml)}
   packager: yarn
+  apigwBinary:
+    types:
+      - 'application/javascript'
+      - 'application/json'
+      - 'application/octet-stream'
+      - 'application/xml'
+      - 'font/eot'
+      - 'font/opentype'
+      - 'font/otf'
+      - 'image/jpeg'
+      - 'image/png'
+      - 'image/svg+xml'
+      - 'text/comma-separated-values'
+      - 'text/css'
+      - 'text/html'
+      - 'text/javascript'
+      - 'text/plain'
+      - 'text/text'
+      - 'text/xml'
 
 functions:
   server:
     handler: src/index.default
     events:
-      - http: ANY /
-      - http: 'ANY /{proxy+}'
+      - http:
+          method: ANY
+          path: /
+          contentHandling: CONVERT_TO_BINARY
+      - http:
+          method: ANY
+          path: '{proxy+}'
+          contentHandling: CONVERT_TO_BINARY
